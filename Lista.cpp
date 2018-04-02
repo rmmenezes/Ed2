@@ -1,5 +1,6 @@
 #include "Lista.h"
 #include <iostream>
+#include <stdio.h>
 
 using namespace std;
 Lista::Lista(void)
@@ -162,8 +163,9 @@ void Lista::bubbleSort(void){
 void Lista::bubbleSort2(void){
 	int aux;
 	for(int i=0; i<iSize; i++){
-		for(int j=i; j<iSize; j++){
-			if(listData[j] <= listData[i]){
+		for(int j=i; j<iSize-i-1; j++){
+			printf("[%d][%d]\n", i, j);
+			if(listData[j] > listData[i]){
 				aux = listData[i];
 				listData[i] = listData[j];
 				listData[j] = aux;
@@ -176,8 +178,10 @@ void Lista::bubbleSort2(void){
 int Lista::bubbleSort3(void){
 	int aux = 0;
 	for(int i=0; i<iSize; i++){
-		for(int j=i; j<iSize; j++){
-			if(listData[j] <= listData[i]){
+		for(int j=i; j<iSize-i-1; j++){
+			printf("[%d][%d]\n", i, j);
+
+			if(listData[j] > listData[i]){
 				aux = listData[i];
 				listData[i] = listData[j];
 				listData[j] = aux;
@@ -211,7 +215,7 @@ void Lista::selectionSort(void){
 
 int main(){
 	Lista *l = new Lista();
-	l->insert(10);
+/*	l->insert(10);
 	l->insert(52);
 	l->insert(3);
 	l->insert(69);
@@ -222,7 +226,14 @@ int main(){
 	l->insert(7);
 	l->insert(9);
 	l->insert(32);
-	l->insert(98);
+	l->insert(98);*/
+	
+	l->insert(5);
+	l->insert(4);
+	l->insert(3);
+	l->insert(2);
+	l->insert(1);
+	l->insert(0);
 
 	cout << "ORIGINAL\n";
 	l->print();
@@ -231,13 +242,14 @@ int main(){
 	l->bubbleSort();
 	l->print();
 
-	cout << "bubblesort que itera até a última posiçao em que ocorreu troca"
-	l->bubbleSort2();
-	l->print();
+	
 	cout << "bubblesort que so itera enquanto ocorrer troca\n";
 	l->bubbleSort3();
 	l->print();
 */
+	cout << "bubblesort que itera ate a ultima posiçao em que ocorreu troca\n";
+	l->bubbleSort2();
+	l->print();
 
 return 0;
 }
