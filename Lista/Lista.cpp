@@ -144,9 +144,6 @@ void Lista::print()const
     cout << "]"<<endl;
 }
 
-
-
-
 void Lista::bubbleSort1(void){
     int aux;
     for(int i=0; i < iSize; i++){
@@ -209,6 +206,54 @@ void Lista::selectionSort(void){
 			listData[indice] = listData[i];
 			listData[i] = menor;
 		}
+	}
+}
+
+void Lista::insertionSort(void){
+	int i, j, aux;
+	for(i=1; i<iSize-1; i++){
+		aux = listData[i];
+		j = i - 1;
+		while(j>=0 && aux > listData[j]){
+			listData[j+1] = listData[j];
+			j--;
+		}
+		if(aux != listData[i]){
+			listData[i] = aux;
+		}
+	}
+}
+
+void Lista::heapify(int i){
+	int l = 2*i + 1;
+	int r = 2*i + 2;
+	int maior = i;
+
+	if(l < iSize && listData[l] > listData[maior]){
+		maior = l;
+	}
+	if(r < iSize && listData[r] > listData[maior]){
+		maior = r;
+	}
+	if(maior != i){
+		aux = listData[i];
+		listData[i] = listData[maior];
+		listData[maior] = i;
+
+		heapify(maior);
+	}
+}
+
+void Lista::heapSort(void){
+	for(int i = (n/2)-1; i >=0; i--){
+		heapify(i);
+	}
+	for(int i = n-1; i>=0; i--){
+		aux = listData[0];
+		listData[0] = listData[i];
+		listData[i] = aux;
+
+		heapify(0)
 	}
 }
 
